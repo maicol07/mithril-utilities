@@ -1,0 +1,32 @@
+{
+  "name": "mithril-utilities",
+  "description": "A collection of utilities for Mithril",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "pnpm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "collect.js": "^4.36.1"
+  },
+  "peerDependencies": {
+    "mithril": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/mithril": "^2.0.12",
+    "mithril": "^2.2.2",
+    "typescript": "^5.0.3"
+  },
+  "packageManager": "pnpm@8.0.0"
+}
