@@ -4,21 +4,21 @@
 
 import classnames, {Argument as ClassNames} from 'classnames';
 import collect, {Collection} from 'collect.js';
-import {
-  Attributes as MithrilAttributes,
+import type {
   Children,
   ClassComponent,
   Vnode,
   VnodeDOM
 } from 'mithril';
 
-export interface Attributes extends MithrilAttributes {
-  style?: string | CSSStyleDeclaration;
+export interface Attributes {
 }
 
 interface AttributesCollection<T extends Attributes> extends Collection<T> {
   addClassNames(...classNames: ClassNames[]): void;
 }
+
+// noinspection SpellCheckingInspection,JSUnusedGlobalSymbols,JSUnusedLocalSymbols
 
 /**
  * @abstract
@@ -45,10 +45,13 @@ interface AttributesCollection<T extends Attributes> extends Collection<T> {
  * @example
  * return m('div', <MyComponent foo="bar"><p>Hello World</p></MyComponent>);
  *
- * @see https://js.org/components.html
+ * @see https://mithril.js.org/components.html
  */
 
-export abstract class Component<A extends Attributes = Attributes, S = undefined> implements ClassComponent<A> {
+export abstract class Component<
+  A extends Attributes = Attributes,
+  S = undefined
+> implements ClassComponent<A> {
   /**
    * The root DOM element for the component.
    */
@@ -74,6 +77,12 @@ export abstract class Component<A extends Attributes = Attributes, S = undefined
    * This is `undefined` by default.
    */
   state!: S;
+
+  /**
+   * Used for attribute code completion in JSX.
+   * @private
+   */
+  private __attrs!: A;
 
   /**
    * @inheritdoc

@@ -10,10 +10,10 @@ import {isVnode} from './helpers';
 import {Component} from './Component';
 
 export type FormSubmitEvent = SubmitEvent & {data: FormData};
-export type FormAttributes = Partial<HTMLElementTagNameMap['form']> & {
+export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form'], 'style' | 'onsubmit'>> {
   onsubmit?: (event: FormSubmitEvent) => void,
-  state?: Map<string, Stream<string | any>> | Record<string, Stream<string | any>>
-};
+  state?: Record<string, Stream<string | any>> | Map<string, Stream<string | any>>
+}
 
 /**
  * A form component that automatically attaches streams to elements.
@@ -39,8 +39,9 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
   }
 
   view(vnode: Vnode<A>) {
+    const attrs = this.attrs.except(['onsubmit', 'state'])
     return (
-      <form {...vnode.attrs} onsubmit={this.onsubmit.bind(this)}>
+      <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)}>
         {(vnode.children as ChildArray).map(this.attachStreamToElement.bind(this))}
       </form>
     );
@@ -92,9 +93,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
   onsubmit(e: FormSubmitEvent) {
     e.preventDefault();
     e.data = new FormData(e.target as HTMLFormElement);
-    if (this.onsubmitFunction) {
-      this.onsubmitFunction(e);
-    }
+    this.onsubmitFunction?.(e);
   }
 
   private getState(key: string) {
