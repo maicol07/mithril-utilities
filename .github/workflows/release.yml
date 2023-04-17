@@ -54,6 +54,9 @@ on:
           - beta
           - alpha
 
+permissions:
+  contents: write
+
 jobs:
   changelog:
     uses: maicol07/actions/.github/workflows/changelog.yml@main
