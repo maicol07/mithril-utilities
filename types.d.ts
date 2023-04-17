@@ -1,11 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
-import {Collection} from 'collect.js';
 import type * as CSS from 'csstype';
 import type * as Mithril from 'mithril';
-
-export type VnodeCollectionItem = Record<string, Mithril.Vnode>;
-export type VnodeCollection = Collection<VnodeCollectionItem>;
 
 declare module 'mithril' {
   interface Attributes {

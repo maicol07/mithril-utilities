@@ -14,8 +14,10 @@
   "main": "dist/index.js",
   "files": [
     "dist",
+    "types.d.ts",
     "README.md"
   ],
+  "types": "types.d.ts",
   "dependencies": {
     "classnames": "^2.3.2",
     "collect.js": "^4.36.1",
