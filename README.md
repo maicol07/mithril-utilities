@@ -141,6 +141,32 @@ To enable JSX support in VSCode, add the following to your `tsconfig.json`:
 }
 ```
 
+##### Further support
+You can now use JSX in your Mithril components, but IDEs won't be able to provide you with much help.
+To enable full support, you can install the `@types/mithril` package:
+```bash
+pnpm add -D @types/mithril
+# or
+# npm install -D @types/mithril
+# or
+# yarn add -D @types/mithril
+```
+
+##### Advanced typings
+You can then add the advanced typings provided by this package in your `d.ts` file:
+```ts
+/// <reference types="mithril-utilities" />
+```
+or in your `tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "mithril-utilities"
+    ]
+  }
+}
+```
 
 ### Development
 #### Setup
