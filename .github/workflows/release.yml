@@ -1,4 +1,5 @@
-name: Publish & Release
+# Path: .github/workflows/release.yml
+name: Release & Publish
 on:
   workflow_dispatch:
     inputs:
@@ -10,6 +11,7 @@ on:
       config_dir:
         description: '[CHANGELOG] git-chglog configuration directory'
         type: string
+        default: '.chglog'
         required: false
 
       filename:
@@ -40,6 +42,7 @@ on:
         description: "Version bump type"
         required: false
         options:
+          - ''
           - patch
           - minor
           - major
@@ -58,19 +61,9 @@ permissions:
   contents: write
 
 jobs:
-  changelog:
-    uses: maicol07/actions/.github/workflows/changelog.yml@main
-    with:
-      next_version: ${{ github.event.inputs.next_version }}
-      config_dir: ${{ github.event.inputs.config_dir }}
-      filename: ${{ github.event.inputs.filename }}
-      path: ${{ github.event.inputs.path }}
-      tag_query: ${{ github.event.inputs.tag_query }}
-      commit_message: ${{ github.event.inputs.commit_message }}
   release_publish:
-    needs: changelog
     uses: maicol07/actions/.github/workflows/release_publish.yml@main
-    secrets: inherit
     with:
       version_type: ${{ github.event.inputs.version_type }}
       release_channel: ${{ github.event.inputs.release_channel }}
+    secrets: inherit
