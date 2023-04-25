@@ -3,7 +3,14 @@
 <a name="unreleased"></a>
 ## Unreleased
 
+### 🐛 Bug Fixes
+- [`69e4fd1`](https://github.com/maicol07/mithril-utilities/commit/69e4fd1bc3d01e144860b6a6e56981df18e46bde) 🏷️ Removed types from package.json
+
+    Typings weren't show correctly
+
 ### 👷 CI changes
+- [`6abbcba`](https://github.com/maicol07/mithril-utilities/commit/6abbcbad4d4eca9048d3f79ed610c3a87bff5716) version bump to 1.1.1
+- [`2c53db8`](https://github.com/maicol07/mithril-utilities/commit/2c53db8c9d557562bb485c04b044187e630d2a3a) 📝 Updated release workflow
 - [`3d3ac23`](https://github.com/maicol07/mithril-utilities/commit/3d3ac23884db056dd9b419669cc609dec5c4337a) 👷 Added changelog generation workflow
 
 
