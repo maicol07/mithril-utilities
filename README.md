@@ -155,14 +155,14 @@ pnpm add -D @types/mithril
 ##### Advanced typings
 You can then add the advanced typings provided by this package in your `d.ts` file:
 ```ts
-/// <reference types="mithril-utilities" />
+import 'mithril-utilities/typings';
 ```
 or in your `tsconfig.json`:
 ```json
 {
   "compilerOptions": {
     "types": [
-      "mithril-utilities"
+      "mithril-utilities/typings"
     ]
   }
 }
