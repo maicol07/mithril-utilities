@@ -16,12 +16,12 @@ export interface RequestOptionsWithUrl<R = any> extends RequestOptions<R> {
   url: string;
 }
 
-export interface RequestError<T = {message: string}> extends Error {
+export interface RequestError<T = any> extends Error {
   code: number;
   response: T;
 }
 
-export default class Request<R> {
+export default class Request<R = any> {
   options: RequestOptionsWithUrl<R> = {
     url: '',
     headers: {},
