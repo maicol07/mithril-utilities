@@ -48,7 +48,7 @@ interface AttributesCollection<T extends Attributes> extends Collection<T> {
  * @see https://mithril.js.org/components.html
  */
 
-export abstract class Component<
+export default abstract class Component<
   A extends Attributes = Attributes,
   S = undefined
 > implements ClassComponent<A> {

@@ -7,7 +7,7 @@ import m, {
 import Stream from 'mithril/stream';
 
 import {isVnode} from './helpers';
-import {Component} from './Component';
+import Component from './Component';
 
 export type FormSubmitEvent = SubmitEvent & {data: FormData};
 export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form'], 'style' | 'onsubmit'>> {
