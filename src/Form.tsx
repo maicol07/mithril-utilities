@@ -52,7 +52,12 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
     if (isVnode<{name?: string, id: string, value: unknown, oninput?:(event: Event) => void, state?: Stream<any>}>(child)) {
       const stream = child.attrs.state ?? this.getState(child.attrs.name ?? child.attrs.id);
       if (stream) {
-        child.attrs.value = stream();
+        const newValue = stream();
+        // Equality check is not strict since it wouldn't be safe.
+        // Example: an int value can be set to an input with type="number"
+        if (newValue != child.attrs.value) {
+          child.attrs.value = stream(newValue);
+        }
 
         const originalOninput = child.attrs.oninput;
         // This ESLint rule is disabled because it doesn't recognize that the `oninput` attribute is being set and Mithril uses it instead of adding an event listener
