@@ -4,12 +4,25 @@
 ## Unreleased
 
 ### 🐛 Bug Fixes
+- [`5403764`](https://github.com/maicol07/mithril-utilities/commit/5403764ea349c65a58207aac61587ba0a9b4fc0e) Exports not working correctly
+- [`b6e85c2`](https://github.com/maicol07/mithril-utilities/commit/b6e85c262c9b0945527dff44a40b90f2ad7d88b7) **request:** 🏷️ Added generic defaults
+
+### 👷 CI changes
+- [`ce7aa5f`](https://github.com/maicol07/mithril-utilities/commit/ce7aa5fb48c3600d17dd3888eb8229129660d829) version bump to 1.1.2
+- [`6abbcba`](https://github.com/maicol07/mithril-utilities/commit/6abbcbad4d4eca9048d3f79ed610c3a87bff5716) version bump to 1.1.1
+
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/maicol07/mithril-utilities/compare/1.1.0...1.1.1)
+
+> Released on April 25, 2023
+
+### 🐛 Bug Fixes
 - [`69e4fd1`](https://github.com/maicol07/mithril-utilities/commit/69e4fd1bc3d01e144860b6a6e56981df18e46bde) 🏷️ Removed types from package.json
 
     Typings weren't show correctly
 
 ### 👷 CI changes
-- [`6abbcba`](https://github.com/maicol07/mithril-utilities/commit/6abbcbad4d4eca9048d3f79ed610c3a87bff5716) version bump to 1.1.1
 - [`2c53db8`](https://github.com/maicol07/mithril-utilities/commit/2c53db8c9d557562bb485c04b044187e630d2a3a) 📝 Updated release workflow
 - [`3d3ac23`](https://github.com/maicol07/mithril-utilities/commit/3d3ac23884db056dd9b419669cc609dec5c4337a) 👷 Added changelog generation workflow
 
