@@ -78,15 +78,18 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   oncreate(vnode: VnodeDOM<A, this>) {
     super.oncreate(vnode);
-    const submitter = this.element.querySelector<HTMLElement>('[type="submit"]');
-    if (submitter) {
-      submitter.addEventListener('click', () => {
-        try {
-          this.element.requestSubmit(submitter);
-        } catch (e) {
-          this.element.requestSubmit();
-        }
-      });
+
+    if ([...this.element.elements].some((element) => element.getAttribute('type') === 'submit')) {
+      const submitter = this.element.querySelector<HTMLElement>('[type="submit"]');
+      if (submitter) {
+        submitter.addEventListener('click', () => {
+          try {
+            this.element.requestSubmit(submitter);
+          } catch (e) {
+            this.element.requestSubmit();
+          }
+        });
+      }
     }
   }
 
