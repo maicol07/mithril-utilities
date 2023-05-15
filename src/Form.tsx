@@ -59,20 +59,24 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
     if (isVnode<FormInputAttributes>(child)) {
       const stream = child.attrs.state ?? this.getState(child.attrs.name ?? child.attrs.id);
       if (stream) {
+        const preferredValueProp = child.attrs['preferred-value-prop'] ?? 'value';
+        const preferredEvent = child.attrs['preferred-event'] ?? 'oninput';
+        /**
+         * Handle updated state.
+         */
         const newValue = stream();
         // Equality check is not strict since it wouldn't be safe.
         // Example: an int value can be set to an input with type="number"
         if (newValue != child.attrs.value) {
-          child.attrs.value = stream(newValue);
+          child.attrs[preferredValueProp] = newValue;
         }
 
-        const originalOninput = child.attrs.oninput;
-        // This ESLint rule is disabled because it doesn't recognize that the `oninput` attribute is being set and Mithril uses it instead of adding an event listener
-        // eslint-disable-next-line unicorn/prefer-add-event-listener
-        child.attrs.oninput = (event: Event) => {
-          stream((event.target as HTMLInputElement).value);
-          if (originalOninput) {
-            originalOninput(event);
+        const originalListener = child.attrs[preferredEvent];
+        child.attrs[preferredEvent] = (event: Event) => {
+          // @ts-expect-error — Event target has value property.
+          stream(event.target![preferredValueProp]);
+          if (originalListener) {
+            originalListener(event);
           }
         };
 
