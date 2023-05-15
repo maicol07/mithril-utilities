@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <title>Mithril utilites testing</title>
+</head>
+<body>
+<main></main>
+<script type="importmap">
+{
+    "imports": {
+        "mithril": "https://cdn.skypack.dev/mithril?min",
+        "mithril/stream": "https://cdn.skypack.dev/mithril/stream?min",
+        "./dist/Component": "./dist/Component.js",
+        "./dist/Form": "./dist/Form.js",
+        "./dist/Request": "./dist/Request.js",
+        "./dist/helpers": "./dist/helpers.js",
+        "classnames": "https://cdn.skypack.dev/classnames?min",
+        "collect.js": "https://cdn.skypack.dev/collect.js?min",
+        "typescript-cookie": "./node_modules/typescript-cookie/dist/typescript-cookie.mjs"
+    }
+}
+</script>
+
+<!--suppress NpmUsedModulesInstalled -->
+<script type="module">
+    import m from 'mithril';
+    import Stream from 'mithril/stream';
+    import Component from "./dist/Component";
+    import Form from "./dist/Form";
+    import Request from "./dist/Request";
+
+    // Component is a wrapper for mithril components
+    class Page extends Component {
+        /** @type import('dist/Form').FormAttributes['state'] */
+        formstate = {
+            name: Stream(''),
+            email: Stream(''),
+            terms: Stream(false),
+        };
+
+        view(vnode) {
+            return m('div', [
+                m('h1', 'Mithril utilities testing'),
+                m('p', 'This is a test page for mithril-utilities.',
+                    ' It is not intended to be used in production.'),
+                m('h2', 'Form example'),
+                m(Form, {
+                    state: this.formstate,
+                    /**
+                     * @typedef @import('dist/Form').FormSubmitEvent FormSubmitEvent
+                     * @param {FormSubmitEvent} event
+                     */
+                    onsubmit: (event) => {
+                        console.log('Form submitted');
+                        console.log('Data: ', Object.fromEntries([...event.data.entries()]));
+                        console.log('State: ', Object.fromEntries(Object.entries(this.formstate).map(([key, value]) => [key, value()])));
+                        alert('Check the console');
+                    }
+                }, [
+                    m('input', {type: 'text', name: 'name', placeholder: 'Enter your name'}),
+                    m('br'),
+                    m('input', {type: 'text', name: 'email', placeholder: 'Enter your email'}),
+                    m('br'),
+                    m('label', undefined, [
+                        m('input', {type: 'checkbox', name: 'terms', 'preferred-value-prop': 'checked'}),
+                        m('span', 'I agree to the terms and conditions')
+                    ]),
+                    m('br'),
+                    m('button', {type: 'submit'}, 'Submit')
+                ]),
+                m('h2', 'Request example'),
+                m('button', {onclick: () => this.request()}, 'Request'),
+            ]);
+        }
+
+        request() {
+            Request.get('https://jsonplaceholder.typicode.com/todos/1').then((data) => {
+                console.log('Request data: ', data);
+                alert('Check the console');
+            });
+        }
+    }
+
+    m.mount(document.body.querySelector('main'), Page);
+</script>
+
+</body>
+</html>
