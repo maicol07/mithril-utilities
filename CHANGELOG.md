@@ -3,12 +3,27 @@
 <a name="unreleased"></a>
 ## Unreleased
 
+### ✨ Features
+- [`0bdc76b`](https://github.com/maicol07/mithril-utilities/commit/0bdc76bdd3e0ed22ec80da87cd648ccd0f2ef811) **form:** Don't submit the form if there is already a submit button registered in the form
+
+### 🐛 Bug Fixes
+- [`1cc0047`](https://github.com/maicol07/mithril-utilities/commit/1cc0047b0e7ee467bce3c8d30252540320a20ddb) **form:** Check if value is equal to current one
+
+### 👷 CI changes
+- [`79c0c75`](https://github.com/maicol07/mithril-utilities/commit/79c0c7549c9711e793aaa8586df991c673fd8c0c) version bump to 1.1.3
+- [`ce7aa5f`](https://github.com/maicol07/mithril-utilities/commit/ce7aa5fb48c3600d17dd3888eb8229129660d829) version bump to 1.1.2
+
+
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/maicol07/mithril-utilities/compare/1.1.1...1.1.2)
+
+> Released on May 04, 2023
+
 ### 🐛 Bug Fixes
 - [`5403764`](https://github.com/maicol07/mithril-utilities/commit/5403764ea349c65a58207aac61587ba0a9b4fc0e) Exports not working correctly
 - [`b6e85c2`](https://github.com/maicol07/mithril-utilities/commit/b6e85c262c9b0945527dff44a40b90f2ad7d88b7) **request:** 🏷️ Added generic defaults
 
 ### 👷 CI changes
-- [`ce7aa5f`](https://github.com/maicol07/mithril-utilities/commit/ce7aa5fb48c3600d17dd3888eb8229129660d829) version bump to 1.1.2
 - [`6abbcba`](https://github.com/maicol07/mithril-utilities/commit/6abbcbad4d4eca9048d3f79ed610c3a87bff5716) version bump to 1.1.1
 
 
