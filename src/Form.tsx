@@ -15,6 +15,13 @@ export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form
   state?: Record<string, Stream<string | any>> | Map<string, Stream<string | any>>
 }
 
+export type FormInputAttributes = HTMLElementTagNameMap['input'] & {
+  state?: Stream<string | any>,
+  'preferred-value-prop'?: 'value' | 'checked' | string,
+  'preferred-event'?: 'oninput' | 'onchange' | string,
+  [key: string]: any
+}
+
 /**
  * A form component that automatically attaches streams to elements.
  * @template A The attributes of the form.
@@ -49,7 +56,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   attachStreamToElement(child: Children) {
     // Check if child is a Vnode
-    if (isVnode<{name?: string, id: string, value: unknown, oninput?:(event: Event) => void, state?: Stream<any>}>(child)) {
+    if (isVnode<FormInputAttributes>(child)) {
       const stream = child.attrs.state ?? this.getState(child.attrs.name ?? child.attrs.id);
       if (stream) {
         const newValue = stream();
