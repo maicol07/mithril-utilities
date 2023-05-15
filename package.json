@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "example": "http-server ."
   },
   "publishConfig": {
     "access": "public"
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/mithril": "^2.0.12",
+    "http-server": "^14.1.1",
     "mithril": "^2.2.2",
     "typescript": "^5.0.4"
   },
