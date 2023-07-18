@@ -24,7 +24,9 @@ export interface RequestError<T = any> extends Error {
 export default class Request<R = any> {
   options: RequestOptionsWithUrl<R> = {
     url: '',
-    headers: {},
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    },
     withCredentials: true,
     xsrfCookieName: 'XSRF-TOKEN',
     xsrfHeaderName: 'X-XSRF-TOKEN'
