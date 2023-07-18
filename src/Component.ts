@@ -82,7 +82,7 @@ export default abstract class Component<
    * Used for attribute code completion in JSX.
    * @private
    */
-  private __attrs!: A;
+  __attrs!: A;
 
   /**
    * @inheritdoc
