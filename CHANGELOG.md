@@ -3,6 +3,24 @@
 <a name="unreleased"></a>
 ## Unreleased
 
+### 🐛 Bug Fixes
+- [`b2f6d0d`](https://github.com/maicol07/mithril-utilities/commit/b2f6d0d4c33c39ebe84e39cd5039d92c53b6b490) **request:** Send `X-Requested-With` header
+
+### 👷 CI changes
+- [`db34016`](https://github.com/maicol07/mithril-utilities/commit/db34016bea05a3e5c3055bc37d51576354b4bad3) version bump to 1.2.1
+- [`8ea3b42`](https://github.com/maicol07/mithril-utilities/commit/8ea3b42ccaa7e038cf6aeab2a6106db940e42856) version bump to 1.2.0
+
+### Other changes
+- [`60446e9`](https://github.com/maicol07/mithril-utilities/commit/60446e9e0777fbe7997a76b9aaeffb079a8409f9) **component:** Remove private from _attrs
+- [`8b80549`](https://github.com/maicol07/mithril-utilities/commit/8b8054939422d0f65b814ca82309ab8f4f494ad2) **deps:** ⬆️ Upgraded dependencies
+- [`a7cd65c`](https://github.com/maicol07/mithril-utilities/commit/a7cd65c1983058516c6ac6d00dd60ed9c159655a) **form:** Take advantage of event bubbling
+
+
+<a name="1.2.0"></a>
+## [1.2.0](https://github.com/maicol07/mithril-utilities/compare/1.1.3...1.2.0)
+
+> Released on May 15, 2023
+
 ### ✨ Features
 - [`77d87b2`](https://github.com/maicol07/mithril-utilities/commit/77d87b28e9411390c4e3d783043f02808d9065eb) ✨ Added preferred event and value prop
 
@@ -10,7 +28,6 @@
 - [`9adb6b9`](https://github.com/maicol07/mithril-utilities/commit/9adb6b9dfc88d41fcfecfb42aaee38f6a849a57b) **form:** Don't submit the form if there is already a submit button registered in the form
 
 ### 👷 CI changes
-- [`8ea3b42`](https://github.com/maicol07/mithril-utilities/commit/8ea3b42ccaa7e038cf6aeab2a6106db940e42856) version bump to 1.2.0
 - [`79c0c75`](https://github.com/maicol07/mithril-utilities/commit/79c0c7549c9711e793aaa8586df991c673fd8c0c) version bump to 1.1.3
 
 ### Other changes
