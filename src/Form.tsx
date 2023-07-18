@@ -48,31 +48,32 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
   view(vnode: Vnode<A>) {
     const attrs = this.attrs.except(['onsubmit', 'state'])
     return (
-      <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)}>
-        {(vnode.children as ChildArray).map(this.attachStreamToElement.bind(this))}
+      <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)} oninput={this.oninput.bind(this)}>
+        {vnode.children}
       </form>
     );
   }
 
-  attachStreamToElement(child: Children) {
+  oninput(event: InputEvent) {
+    const input = event.target as HTMLInputElement & FormInputAttributes;
     // Check if child is a Vnode
-    if (isVnode<FormInputAttributes>(child)) {
-      const stream = child.attrs.state ?? this.getState(child.attrs.name ?? child.attrs.id);
+    if (isVnode<FormInputAttributes>(input)) {
+      const stream = input.attrs.state ?? this.getState(input.attrs.name ?? input.attrs.id);
       if (stream) {
-        const preferredValueProp = child.attrs['preferred-value-prop'] ?? 'value';
-        const preferredEvent = child.attrs['preferred-event'] ?? 'oninput';
+        const preferredValueProp = input.attrs['preferred-value-prop'] ?? 'value';
+        const preferredEvent = input.attrs['preferred-event'] ?? 'oninput';
         /**
          * Handle updated state.
          */
         const newValue = stream();
         // Equality check is not strict since it wouldn't be safe.
         // Example: an int value can be set to an input with type="number"
-        if (newValue != child.attrs.value) {
-          child.attrs[preferredValueProp] = newValue;
+        if (newValue != input.attrs.value) {
+          input.attrs[preferredValueProp] = newValue;
         }
 
-        const originalListener = child.attrs[preferredEvent];
-        child.attrs[preferredEvent] = (event: Event) => {
+        const originalListener = input.attrs[preferredEvent];
+        input.attrs[preferredEvent] = (event: Event) => {
           // @ts-expect-error — Event target has value property.
           stream(event.target![preferredValueProp]);
           if (originalListener) {
@@ -80,16 +81,9 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
           }
         };
 
-        delete child.attrs.state;
-      }
-
-      // Check if `child` has children and recursively call this function on them.
-      if (Array.isArray(child.children)) {
-        child.children = child.children.map(this.attachStreamToElement.bind(this));
+        delete input.attrs.state;
       }
     }
-
-    return child;
   }
 
   oncreate(vnode: VnodeDOM<A, this>) {
