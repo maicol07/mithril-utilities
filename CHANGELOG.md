@@ -4,13 +4,34 @@
 ## Unreleased
 
 ### ✨ Features
+- [`77d87b2`](https://github.com/maicol07/mithril-utilities/commit/77d87b28e9411390c4e3d783043f02808d9065eb) ✨ Added preferred event and value prop
+
+### 🐛 Bug Fixes
+- [`9adb6b9`](https://github.com/maicol07/mithril-utilities/commit/9adb6b9dfc88d41fcfecfb42aaee38f6a849a57b) **form:** Don't submit the form if there is already a submit button registered in the form
+
+### 👷 CI changes
+- [`8ea3b42`](https://github.com/maicol07/mithril-utilities/commit/8ea3b42ccaa7e038cf6aeab2a6106db940e42856) version bump to 1.2.0
+- [`79c0c75`](https://github.com/maicol07/mithril-utilities/commit/79c0c7549c9711e793aaa8586df991c673fd8c0c) version bump to 1.1.3
+
+### Other changes
+- [`bf4f3fc`](https://github.com/maicol07/mithril-utilities/commit/bf4f3fcd68fa448796b26121ccfd6ef19c519d91) Added example
+- [`e6d237e`](https://github.com/maicol07/mithril-utilities/commit/e6d237eb51bf763d1c0d34af211bb14a782cac04) ✏️ Improved typings
+- [`4783f9b`](https://github.com/maicol07/mithril-utilities/commit/4783f9b65e897b020e4300495ea31243cb1e670d) **deps:** ⬆️ Upgraded dependencies
+- [`95d31b8`](https://github.com/maicol07/mithril-utilities/commit/95d31b86b19415196324b42160abdc8c491c584e) **deps:** Added `http-server` for running the example
+
+
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/maicol07/mithril-utilities/compare/1.1.2...1.1.3)
+
+> Released on May 08, 2023
+
+### ✨ Features
 - [`0bdc76b`](https://github.com/maicol07/mithril-utilities/commit/0bdc76bdd3e0ed22ec80da87cd648ccd0f2ef811) **form:** Don't submit the form if there is already a submit button registered in the form
 
 ### 🐛 Bug Fixes
 - [`1cc0047`](https://github.com/maicol07/mithril-utilities/commit/1cc0047b0e7ee467bce3c8d30252540320a20ddb) **form:** Check if value is equal to current one
 
 ### 👷 CI changes
-- [`79c0c75`](https://github.com/maicol07/mithril-utilities/commit/79c0c7549c9711e793aaa8586df991c673fd8c0c) version bump to 1.1.3
 - [`ce7aa5f`](https://github.com/maicol07/mithril-utilities/commit/ce7aa5fb48c3600d17dd3888eb8229129660d829) version bump to 1.1.2
 
 
