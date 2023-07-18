@@ -16,10 +16,7 @@ export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form
 }
 
 export type FormInputAttributes = HTMLElementTagNameMap['input'] & {
-  state?: Stream<string | any>,
-  'preferred-value-prop'?: 'value' | 'checked' | string,
-  'preferred-event'?: 'oninput' | 'onchange' | string,
-  [key: string]: any
+  'data-state'?: Stream<string | any>,
 }
 
 /**
@@ -57,31 +54,19 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
   oninput(event: InputEvent) {
     const input = event.target as HTMLInputElement & FormInputAttributes;
     // Check if child is a Vnode
-    if (isVnode<FormInputAttributes>(input)) {
-      const stream = input.attrs.state ?? this.getState(input.attrs.name ?? input.attrs.id);
-      if (stream) {
-        const preferredValueProp = input.attrs['preferred-value-prop'] ?? 'value';
-        const preferredEvent = input.attrs['preferred-event'] ?? 'oninput';
-        /**
-         * Handle updated state.
-         */
-        const newValue = stream();
-        // Equality check is not strict since it wouldn't be safe.
-        // Example: an int value can be set to an input with type="number"
-        if (newValue != input.attrs.value) {
-          input.attrs[preferredValueProp] = newValue;
-        }
-
-        const originalListener = input.attrs[preferredEvent];
-        input.attrs[preferredEvent] = (event: Event) => {
-          // @ts-expect-error — Event target has value property.
-          stream(event.target![preferredValueProp]);
-          if (originalListener) {
-            originalListener(event);
-          }
-        };
-
-        delete input.attrs.state;
+    let stream = input.dataset.state as any;
+    if (typeof stream !== 'function') {
+      stream = this.getState(input.name ?? input.id);
+    }
+    if (stream) {
+      /**
+       * Handle updated state.
+       */
+      const newValue = stream();
+      // Equality check is not strict since it wouldn't be safe.
+      // Example: an int value can be set to an input with type="number"
+      if (newValue != input.value) {
+        input.value = newValue;
       }
     }
   }
