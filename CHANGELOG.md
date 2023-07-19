@@ -4,10 +4,23 @@
 ## Unreleased
 
 ### 🐛 Bug Fixes
+- [`5559a0a`](https://github.com/maicol07/mithril-utilities/commit/5559a0aa61cdc5bcc3cab6fb761e46ea5dde0329) Fix latest form changes
+
+### 👷 CI changes
+- [`43998d2`](https://github.com/maicol07/mithril-utilities/commit/43998d2a4066784ad8fecd5faa0d9f34575fc267) version bump to 1.2.3
+- [`7597608`](https://github.com/maicol07/mithril-utilities/commit/7597608e843de1fbe73cad29ad027b8e1a687f68) version bump to 1.2.2
+- [`db34016`](https://github.com/maicol07/mithril-utilities/commit/db34016bea05a3e5c3055bc37d51576354b4bad3) version bump to 1.2.1
+
+
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/maicol07/mithril-utilities/compare/1.2.0...1.2.1)
+
+> Released on July 18, 2023
+
+### 🐛 Bug Fixes
 - [`b2f6d0d`](https://github.com/maicol07/mithril-utilities/commit/b2f6d0d4c33c39ebe84e39cd5039d92c53b6b490) **request:** Send `X-Requested-With` header
 
 ### 👷 CI changes
-- [`db34016`](https://github.com/maicol07/mithril-utilities/commit/db34016bea05a3e5c3055bc37d51576354b4bad3) version bump to 1.2.1
 - [`8ea3b42`](https://github.com/maicol07/mithril-utilities/commit/8ea3b42ccaa7e038cf6aeab2a6106db940e42856) version bump to 1.2.0
 
 ### Other changes
