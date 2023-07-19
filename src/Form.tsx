@@ -6,8 +6,8 @@ import m, {
 } from 'mithril';
 import Stream from 'mithril/stream';
 
-import {isVnode} from './helpers';
 import Component from './Component';
+import Mithril from 'mithril';
 
 export type FormSubmitEvent = SubmitEvent & {data: FormData};
 export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form'], 'style' | 'onsubmit'>> {
@@ -53,26 +53,17 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   oninput(event: InputEvent) {
     const input = event.target as HTMLInputElement & FormInputAttributes;
-    // Check if child is a Vnode
-    let stream = input.dataset.state as any;
-    if (typeof stream !== 'function') {
-      stream = this.getState(input.name ?? input.id);
-    }
+    const stream = this.getState(input.name ?? input.id);
     if (stream) {
-      /**
-       * Handle updated state.
-       */
-      const newValue = stream();
-      // Equality check is not strict since it wouldn't be safe.
-      // Example: an int value can be set to an input with type="number"
-      if (newValue != input.value) {
-        input.value = newValue;
-      }
+      stream(input.value);
     }
   }
 
   oncreate(vnode: VnodeDOM<A, this>) {
     super.oncreate(vnode);
+    const formElements = [...this.element.elements] as HTMLFormElement[];
+
+    this.setStreamValueToInputs(formElements);
 
     if (![...this.element.elements].some((element) => element.getAttribute('type') === 'submit')) {
       const submitter = this.element.querySelector<HTMLElement>('[type="submit"]');
@@ -84,6 +75,21 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
             this.element.requestSubmit();
           }
         });
+      }
+    }
+  }
+
+  onupdate(vnode: Mithril.VnodeDOM<A, this>) {
+    super.onupdate(vnode);
+    this.setStreamValueToInputs([...this.element.elements] as HTMLFormElement[])
+  }
+
+  setStreamValueToInputs(inputs: HTMLInputElement[] | HTMLFormElement[]) {
+    // Attach streams to inputs
+    for (const element of inputs) {
+      const stream = this.getState(element.name ?? element.id);
+      if (stream) {
+        element.value = stream();
       }
     }
   }
