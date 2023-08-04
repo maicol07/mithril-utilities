@@ -4,10 +4,25 @@
 ## Unreleased
 
 ### 🐛 Bug Fixes
+- [`149cfa8`](https://github.com/maicol07/mithril-utilities/commit/149cfa810b5d73184b43d0de1902fb923cc4843e) **form:** Fix streams not working
+
+### 👷 CI changes
+- [`bbc07e1`](https://github.com/maicol07/mithril-utilities/commit/bbc07e17220268e7a9aea7c46723f9517996b6dd) version bump to 1.2.4
+- [`43998d2`](https://github.com/maicol07/mithril-utilities/commit/43998d2a4066784ad8fecd5faa0d9f34575fc267) version bump to 1.2.3
+
+### Other changes
+- [`5f95620`](https://github.com/maicol07/mithril-utilities/commit/5f956201af51fcd9fdf7bcca76496acaf43cd9a2) Added dev command
+
+
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/maicol07/mithril-utilities/compare/1.2.1...1.2.3)
+
+> Released on July 18, 2023
+
+### 🐛 Bug Fixes
 - [`5559a0a`](https://github.com/maicol07/mithril-utilities/commit/5559a0aa61cdc5bcc3cab6fb761e46ea5dde0329) Fix latest form changes
 
 ### 👷 CI changes
-- [`43998d2`](https://github.com/maicol07/mithril-utilities/commit/43998d2a4066784ad8fecd5faa0d9f34575fc267) version bump to 1.2.3
 - [`7597608`](https://github.com/maicol07/mithril-utilities/commit/7597608e843de1fbe73cad29ad027b8e1a687f68) version bump to 1.2.2
 - [`db34016`](https://github.com/maicol07/mithril-utilities/commit/db34016bea05a3e5c3055bc37d51576354b4bad3) version bump to 1.2.1
 
