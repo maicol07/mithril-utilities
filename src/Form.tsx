@@ -89,7 +89,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
     for (const element of inputs) {
       const stream = this.getState(element.name ?? element.id);
       if (stream) {
-        element.value = stream();
+        element.value = stream() ?? '';
       }
     }
   }
