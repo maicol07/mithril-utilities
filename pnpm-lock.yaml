@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@types/mithril':
-    specifier: ^2.0.12
-    version: 2.0.12
+    specifier: ^2.0.13
+    version: 2.0.13
   http-server:
     specifier: ^14.1.1
     version: 14.1.1
@@ -34,8 +34,8 @@ devDependencies:
 
 packages:
 
-  /@types/mithril@2.0.12:
-    resolution: {integrity: sha512-vedzt04n3EB7rcnfSLCv3+w3qJLkGWdsNRBKvelTqhSJSfg73Roq9b+rcnn9zeqGYtQAMqNcO6vNBR/w0OzipQ==}
+  /@types/mithril@2.0.13:
+    resolution: {integrity: sha512-cwqUmbbHgPzpIzWNFskC8rc1jHV8lnb/inMXUAdmd0b6fLa7YyQJhA+cFos8V4oSsMGgfyW933AiwWdb17qnEg==}
     dev: true
 
   /ansi-styles@4.3.0:

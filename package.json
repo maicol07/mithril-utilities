@@ -29,7 +29,7 @@
     "mithril": "^2.0.4"
   },
   "devDependencies": {
-    "@types/mithril": "^2.0.12",
+    "@types/mithril": "^2.0.13",
     "http-server": "^14.1.1",
     "mithril": "^2.2.2",
     "typescript": "^5.1.6"
