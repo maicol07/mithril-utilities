@@ -4,10 +4,22 @@
 ## Unreleased
 
 ### 🐛 Bug Fixes
+- [`6aa9a24`](https://github.com/maicol07/mithril-utilities/commit/6aa9a246093f5ba0fe7de8a58e81b79afdea258d) Default to empty string when there isn't a value
+
+### 👷 CI changes
+- [`2c4dc85`](https://github.com/maicol07/mithril-utilities/commit/2c4dc858975d3de7ebf663dffe35ed9fffb96203) version bump to 1.2.5
+- [`bbc07e1`](https://github.com/maicol07/mithril-utilities/commit/bbc07e17220268e7a9aea7c46723f9517996b6dd) version bump to 1.2.4
+
+
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/maicol07/mithril-utilities/compare/1.2.3...1.2.4)
+
+> Released on July 19, 2023
+
+### 🐛 Bug Fixes
 - [`149cfa8`](https://github.com/maicol07/mithril-utilities/commit/149cfa810b5d73184b43d0de1902fb923cc4843e) **form:** Fix streams not working
 
 ### 👷 CI changes
-- [`bbc07e1`](https://github.com/maicol07/mithril-utilities/commit/bbc07e17220268e7a9aea7c46723f9517996b6dd) version bump to 1.2.4
 - [`43998d2`](https://github.com/maicol07/mithril-utilities/commit/43998d2a4066784ad8fecd5faa0d9f34575fc267) version bump to 1.2.3
 
 ### Other changes
