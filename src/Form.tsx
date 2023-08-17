@@ -13,6 +13,7 @@ export type FormSubmitEvent = SubmitEvent & {data: FormData};
 export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form'], 'style' | 'onsubmit'>> {
   onsubmit?: (event: FormSubmitEvent) => void,
   state?: Record<string, Stream<string | any>> | Map<string, Stream<string | any>>
+  additionalElementsSelector?: string
 }
 
 export type FormInputAttributes = HTMLElementTagNameMap['input'] & {
@@ -35,6 +36,8 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
    */
   state!: NonNullable<A['state']>;
 
+  formElements!: HTMLFormElement[];
+
   oninit(vnode: Vnode<A, this>) {
     super.oninit(vnode);
     this.onsubmitFunction = vnode.attrs.onsubmit;
@@ -43,7 +46,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
   }
 
   view(vnode: Vnode<A>) {
-    const attrs = this.attrs.except(['onsubmit', 'state'])
+    const attrs = this.attrs.except(['onsubmit', 'state', 'additionalElementsSelector']);
     return (
       <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)} oninput={this.oninput.bind(this)}>
         {vnode.children}
@@ -61,11 +64,16 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   oncreate(vnode: VnodeDOM<A, this>) {
     super.oncreate(vnode);
-    const formElements = [...this.element.elements] as HTMLFormElement[];
 
-    this.setStreamValueToInputs(formElements);
+    this.formElements = [...this.element.elements] as HTMLFormElement[];
+    if (vnode.attrs.additionalElementsSelector) {
+      this.formElements.push(...this.element.querySelectorAll<HTMLFormElement>(vnode.attrs.additionalElementsSelector));
+    }
 
-    if (![...this.element.elements].some((element) => element.getAttribute('type') === 'submit')) {
+    this.setStreamValueToInputs(this.formElements);
+
+    // Fix for submit elements not attached to the form
+    if (!this.formElements.some((element) => element.getAttribute('type') === 'submit')) {
       const submitter = this.element.querySelector<HTMLElement>('[type="submit"]');
       if (submitter) {
         submitter.addEventListener('click', () => {
@@ -81,13 +89,13 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   onupdate(vnode: Mithril.VnodeDOM<A, this>) {
     super.onupdate(vnode);
-    this.setStreamValueToInputs([...this.element.elements] as HTMLFormElement[])
+    this.setStreamValueToInputs(this.formElements)
   }
 
   setStreamValueToInputs(inputs: HTMLInputElement[] | HTMLFormElement[]) {
     // Attach streams to inputs
     for (const element of inputs) {
-      const stream = this.getState(element.name ?? element.id);
+      const stream = this.getState(element.getAttribute('name') ?? element.id);
       if (stream) {
         element.value = stream() ?? '';
       }
