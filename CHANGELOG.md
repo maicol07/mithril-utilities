@@ -3,11 +3,30 @@
 <a name="unreleased"></a>
 ## Unreleased
 
+### ✨ Features
+- [`97bd49e`](https://github.com/maicol07/mithril-utilities/commit/97bd49ed31498bde74c7acb655bdf87f12c081d5) ✨ Add support for additional form elements
+
+    This commit adds the ability to include additional form elements using a selector. The 'additionalElementsSelector' property was added to the FormAttributes interface and used in 'oncreate'. Form elements not directly attached to the form but that match the selector are now included in 'formElements'. This was necessary to support forms that have input elements which are not direct children of the form.
+
+### 👷 CI changes
+- [`f0986b8`](https://github.com/maicol07/mithril-utilities/commit/f0986b82c43f7798549292ecb5d0394ef4bc2ee5) version bump to 1.2.6
+- [`2c4dc85`](https://github.com/maicol07/mithril-utilities/commit/2c4dc858975d3de7ebf663dffe35ed9fffb96203) version bump to 1.2.5
+
+### Other changes
+- [`5d53619`](https://github.com/maicol07/mithril-utilities/commit/5d5361983774f35d8d83305ea8ba9ec9dea75798) **deps:** ⬆️ Update [@types](:/types)/mithril to version 2.0.13
+
+    Updated the devDependency [@types](:/types)/mithril to version 2.0.13 in package.json and pnpm-lock.yaml. This was necessitated by the need to keep up with the latest changes and improvements in the Mithril type definitions. Ensuring the type definitions used in the project align with the current state of Mithril enhances type safety and improves developer experience.
+
+
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/maicol07/mithril-utilities/compare/1.2.4...1.2.5)
+
+> Released on August 04, 2023
+
 ### 🐛 Bug Fixes
 - [`6aa9a24`](https://github.com/maicol07/mithril-utilities/commit/6aa9a246093f5ba0fe7de8a58e81b79afdea258d) Default to empty string when there isn't a value
 
 ### 👷 CI changes
-- [`2c4dc85`](https://github.com/maicol07/mithril-utilities/commit/2c4dc858975d3de7ebf663dffe35ed9fffb96203) version bump to 1.2.5
 - [`bbc07e1`](https://github.com/maicol07/mithril-utilities/commit/bbc07e17220268e7a9aea7c46723f9517996b6dd) version bump to 1.2.4
 
 
