@@ -56,7 +56,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   oninput(event: InputEvent) {
     const input = event.target as HTMLInputElement & FormInputAttributes;
-    const stream = this.getState(input.name ?? input.id);
+    const stream = this.getState(input.getAttribute('name') ?? input.id);
     if (stream) {
       stream(input.value);
     }
