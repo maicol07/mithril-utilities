@@ -54,11 +54,13 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
     );
   }
 
-  oninput(event: InputEvent) {
-    const input = event.target as HTMLInputElement & FormInputAttributes;
-    const stream = this.getState(input.getAttribute('name') ?? input.id);
+  oninput(event: Event) {
+    const element = event.target as HTMLInputElement & FormInputAttributes;
+    const stream = element.dataset.state ?? this.getState(element.getAttribute('name') ?? element.id);
     if (stream) {
-      stream(input.value);
+      const preferredValueProp = element.dataset.preferredValueProp ?? 'value';
+      // @ts-expect-error (preferredValueProp is recognized as a generic string)
+      stream(element[preferredValueProp]);
     }
   }
 
@@ -97,7 +99,9 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
     for (const element of inputs) {
       const stream = this.getState(element.getAttribute('name') ?? element.id);
       if (stream) {
-        element.value = stream() ?? '';
+        const preferredValueProp = element.dataset.preferredValueProp ?? 'value';
+        // @ts-expect-error (preferredValueProp is recognized as a generic string)
+        element[preferredValueProp] = stream() ?? '';
       }
     }
   }
