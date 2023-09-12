@@ -3,13 +3,27 @@
 <a name="unreleased"></a>
 ## Unreleased
 
+### 🐛 Bug Fixes
+- [`f6bc406`](https://github.com/maicol07/mithril-utilities/commit/f6bc4060c55895d7b6b585c7ccb48efe94e80e5a) oninput event not caught on some elements
+
+    The oninput function in Form.tsx was updated to utilize 'getAttribute' for element name retrieval instead of 'name'. This enhances compatibility for HTML elements with no 'name' attribute but an input id.
+
+### 👷 CI changes
+- [`75df335`](https://github.com/maicol07/mithril-utilities/commit/75df33547d6dfeb16384c1efc698a48e21cd4e46) version bump to 1.2.7
+- [`f0986b8`](https://github.com/maicol07/mithril-utilities/commit/f0986b82c43f7798549292ecb5d0394ef4bc2ee5) version bump to 1.2.6
+
+
+<a name="1.2.6"></a>
+## [1.2.6](https://github.com/maicol07/mithril-utilities/compare/1.2.5...1.2.6)
+
+> Released on August 17, 2023
+
 ### ✨ Features
 - [`97bd49e`](https://github.com/maicol07/mithril-utilities/commit/97bd49ed31498bde74c7acb655bdf87f12c081d5) ✨ Add support for additional form elements
 
     This commit adds the ability to include additional form elements using a selector. The 'additionalElementsSelector' property was added to the FormAttributes interface and used in 'oncreate'. Form elements not directly attached to the form but that match the selector are now included in 'formElements'. This was necessary to support forms that have input elements which are not direct children of the form.
 
 ### 👷 CI changes
-- [`f0986b8`](https://github.com/maicol07/mithril-utilities/commit/f0986b82c43f7798549292ecb5d0394ef4bc2ee5) version bump to 1.2.6
 - [`2c4dc85`](https://github.com/maicol07/mithril-utilities/commit/2c4dc858975d3de7ebf663dffe35ed9fffb96203) version bump to 1.2.5
 
 ### Other changes

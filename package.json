@@ -1,7 +1,7 @@
 {
   "name": "mithril-utilities",
   "description": "A collection of utilities for Mithril",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "license": "MIT",
   "type": "module",
   "scripts": {
