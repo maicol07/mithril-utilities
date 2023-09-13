@@ -1,6 +1,4 @@
 import m, {
-  ChildArray,
-  Children,
   Vnode,
   VnodeDOM
 } from 'mithril';
@@ -13,7 +11,8 @@ export type FormSubmitEvent = SubmitEvent & {data: FormData};
 export interface FormAttributes extends Partial<Omit<HTMLElementTagNameMap['form'], 'style' | 'onsubmit'>> {
   onsubmit?: (event: FormSubmitEvent) => void,
   state?: Record<string, Stream<string | any>> | Map<string, Stream<string | any>>
-  additionalElementsSelector?: string
+  additionalElementsSelector?: string,
+  additionalEvents?: string[]
 }
 
 export type FormInputAttributes = HTMLElementTagNameMap['input'] & {
@@ -47,6 +46,9 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
 
   view(vnode: Vnode<A>) {
     const attrs = this.attrs.except(['onsubmit', 'state', 'additionalElementsSelector']);
+    for (const event of vnode.attrs.additionalEvents ?? []) {
+      attrs.put(event, this.onsubmit.bind(this))
+    }
     return (
       <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)} oninput={this.oninput.bind(this)}>
         {vnode.children}
