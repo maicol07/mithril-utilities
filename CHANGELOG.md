@@ -14,6 +14,13 @@
 
 
 <a name="1.2.6"></a>
+## [1.4.0](https://github.com/maicol07/mithril-utilities/compare/v1.3.0...v1.4.0) (2023-09-13)
+
+
+### Features
+
+* Listen onchange event by default ([ebe438d](https://github.com/maicol07/mithril-utilities/commit/ebe438db9bcd40052d941a4532dabd560da4511b))
+
 ## [1.3.0](https://github.com/maicol07/mithril-utilities/compare/1.2.7...v1.3.0) (2023-09-13)
 
 
