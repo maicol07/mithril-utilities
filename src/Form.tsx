@@ -50,7 +50,7 @@ export default class Form<A extends FormAttributes = FormAttributes> extends Com
       attrs.put(event, this.onsubmit.bind(this))
     }
     return (
-      <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)} oninput={this.oninput.bind(this)}>
+      <form {...attrs.all()} onsubmit={this.onsubmit.bind(this)} oninput={this.oninput.bind(this)} onchange={this.oninput.bind(this)}>
         {vnode.children}
       </form>
     );
