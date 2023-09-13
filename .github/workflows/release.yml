@@ -43,7 +43,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Publish
-        run: pnpm publish --access public --tag ${{ github.event.inputs.release_channel }}
+        run: pnpm publish --access public
         if: ${{ steps.release.outputs.release_created }}
 #      - uses: actions/setup-node@v1
 #        with:
