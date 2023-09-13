@@ -14,6 +14,14 @@
 
 
 <a name="1.2.6"></a>
+## [1.3.0](https://github.com/maicol07/mithril-utilities/compare/1.2.7...v1.3.0) (2023-09-13)
+
+
+### Features
+
+* Re-add support for custom value properties in Form inputs ([c3460e7](https://github.com/maicol07/mithril-utilities/commit/c3460e7ca68be3560d71f043862404f21d88e6ac))
+* Reintroduced additional events handling ([f16db76](https://github.com/maicol07/mithril-utilities/commit/f16db7643b02509120866bd979f4e7d2054c5c85))
+
 ## [1.2.6](https://github.com/maicol07/mithril-utilities/compare/1.2.5...1.2.6)
 
 > Released on August 17, 2023
