@@ -16,7 +16,7 @@
   "main": "dist/index.js",
   "files": [
     "dist",
-    "typings.d.ts",
+    "typings/index.d.ts",
     "README.md"
   ],
   "dependencies": {
@@ -29,10 +29,11 @@
     "mithril": "^2.0.4"
   },
   "devDependencies": {
-    "@types/mithril": "^2.0.13",
+    "@types/mithril": "^2.0.14",
     "http-server": "^14.1.1",
     "mithril": "^2.2.2",
-    "typescript": "^5.1.6"
+    "type-fest": "^4.3.1",
+    "typescript": "^5.2.2"
   },
-  "packageManager": "pnpm@8.6.0"
+  "packageManager": "pnpm@8.7.5"
 }

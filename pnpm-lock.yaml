@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -20,22 +20,25 @@ dependencies:
 
 devDependencies:
   '@types/mithril':
-    specifier: ^2.0.13
-    version: 2.0.13
+    specifier: ^2.0.14
+    version: 2.0.14
   http-server:
     specifier: ^14.1.1
     version: 14.1.1
   mithril:
     specifier: ^2.2.2
     version: 2.2.2
+  type-fest:
+    specifier: ^4.3.1
+    version: 4.3.1
   typescript:
-    specifier: ^5.1.6
-    version: 5.1.6
+    specifier: ^5.2.2
+    version: 5.2.2
 
 packages:
 
-  /@types/mithril@2.0.13:
-    resolution: {integrity: sha512-cwqUmbbHgPzpIzWNFskC8rc1jHV8lnb/inMXUAdmd0b6fLa7YyQJhA+cFos8V4oSsMGgfyW933AiwWdb17qnEg==}
+  /@types/mithril@2.0.14:
+    resolution: {integrity: sha512-sB2gkRoqTx6ckv5k16kGV5g9pHaTBdptyDVr21jjdsAiF6PQ0JK5e0jv3KGEsunXTqsiv3WFZQ63/D06pdbI3A==}
     dev: true
 
   /ansi-styles@4.3.0:
@@ -369,13 +372,18 @@ packages:
       has-flag: 4.0.0
     dev: true
 
+  /type-fest@4.3.1:
+    resolution: {integrity: sha512-pphNW/msgOUSkJbH58x8sqpq8uQj6b0ZKGxEsLKMUnGorRcDjrUaLS+39+/ub41JNTwrrMyJcUB8+YZs3mbwqw==}
+    engines: {node: '>=16'}
+    dev: true
+
   /typescript-cookie@1.0.6:
     resolution: {integrity: sha512-s+BZr7/9BUG6Kg7jGGcOY/4XJcP+iZRFdF3q4FPTfRSP83ivLWF94OcH8PrzGmnS8Ab9qP7ENu/ikLwNFsIafA==}
     engines: {node: '>=14'}
     dev: false
 
-  /typescript@5.1.6:
-    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
+  /typescript@5.2.2:
+    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
