@@ -1,3 +1,5 @@
+# Path: .github/workflows/release.yml
+name: Release & Publish
 on:
   push:
     branches:
@@ -6,123 +8,10 @@ on:
 permissions:
   contents: write
   pull-requests: write
-name: Release & Publish
+
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        id: release
-        with:
-          release-type: node
-          pull-request-title-pattern: 'chore: release ${version}'
-      # The logic below handles the npm publication:
-      - uses: actions/checkout@v3
-        # these if statements ensure that a publication only occurs when
-        # a new release is created:
-        if: ${{ steps.release.outputs.release_created }}
-      - uses: pnpm/action-setup@v2
-        if: ${{ steps.release.outputs.release_created }}
-      - name: Use Node.js 20
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: 'pnpm'
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Install dependencies
-        run: pnpm install
-        if: ${{ steps.release.outputs.release_created }}
-
-#      - name: Pull changes
-#        run: git pull
-      - name: Set publishing config
-        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Publish
-        run: pnpm publish --access public
-        if: ${{ steps.release.outputs.release_created }}
-#      - uses: actions/setup-node@v1
-#        with:
-#          node-version: 20
-#          registry-url: 'https://registry.npmjs.org'
-#        if: ${{ steps.release.outputs.release_created }}
-#      - run: npm ci
-#        if: ${{ steps.release.outputs.release_created }}
-#      - run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-#        if: ${{ steps.release.outputs.release_created }}
-
-# Path: .github/workflows/release.yml
-#name:
-#on:
-#  workflow_dispatch:
-#    inputs:
-#      next_version:
-#        description: '[CHANGELOG] Next version tag to use instead of UNRELEASED'
-#        type: string
-#        required: false
-#
-#      config_dir:
-#        description: '[CHANGELOG] git-chglog configuration directory'
-#        type: string
-#        default: '.chglog'
-#        required: false
-#
-#      filename:
-#        description: '[CHANGELOG] Filename to write the changelog to'
-#        type: string
-#        required: false
-#        default: CHANGELOG.md
-#
-#      path:
-#        description: '[CHANGELOG] Optional path to follow for directory'
-#        default: ''
-#        type: string
-#        required: false
-#
-#      tag_query:
-#        description: '[CHANGELOG] Optional tag query to use for changelog generation'
-#        default: ''
-#        type: string
-#        required: false
-#
-#      commit_message:
-#        type: string
-#        description: "[CHANGELOG] Commit message"
-#        required: false
-#
-#      version_type:
-#        type: choice
-#        description: "Version bump type"
-#        required: false
-#        options:
-#          - ''
-#          - patch
-#          - minor
-#          - major
-#          - rc
-#      release_channel:
-#        type: choice
-#        description: "Release channel"
-#        required: false
-#        options:
-#          - latest
-#          - next
-#          - beta
-#          - alpha
-#
-#permissions:
-#  contents: write
-#
-#jobs:
-#  release_publish:
-#    uses: maicol07/actions/.github/workflows/release_publish.yml@main
-#    with:
-#      version_type: ${{ github.event.inputs.version_type }}
-#      release_channel: ${{ github.event.inputs.release_channel }}
-#    secrets: inherit
+  release_publish:
+    uses: maicol07/actions/.github/workflows/release_publish.yml@main
+    with:
+      release_channel: ${{ github.event.inputs.release_channel }}
+  secrets: inherit # Or pass just what secret you want. This is required to pass the NPM_TOKEN needed to publish the package
