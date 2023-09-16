@@ -130,7 +130,7 @@ const request = new Request({
 #### JSX IDE support
 ##### Prerequisites
 JSX is supported by default in Mithril, but IDEs like Webstorm or VSCode don't know how to handle it.
-To enable JSX support in VSCode, add the following to your `tsconfig.json`:
+To enable JSX support, add the following to your `tsconfig.json`:
 ```json
 {
   "compilerOptions": {
@@ -140,6 +140,20 @@ To enable JSX support in VSCode, add the following to your `tsconfig.json`:
   }
 }
 ```
+Or, if you are using Vite:
+```json
+{
+  "esbuild": {
+    "jsxFactory": "m",
+    "jsxFragment": "m.Fragment",
+    "jsxInject": "import m from 'mithril'"
+  }
+}
+```
+inside your `defineConfig` function.
+> **Note**
+> The `jsxInject` option automatically imports `m` in every file, so you don't have to do it manually.
+> Also, keep the `jsx: preserve` option in your `tsconfig.json` to avoid conflicts.
 
 ##### Further support
 You can now use JSX in your Mithril components, but IDEs won't be able to provide you with much help.
@@ -163,6 +177,21 @@ or in your `tsconfig.json`:
   "compilerOptions": {
     "types": [
       "mithril-utilities/typings"
+    ]
+  }
+}
+```
+
+If you'd like to have kebabcased attributes, you can use the kebab-cased variant:
+```ts
+import 'mithril-utilities/typings/kebab-cased';
+```
+or
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "mithril-utilities/typings/kebab-cased"
     ]
   }
 }
